@@ -191,7 +191,7 @@ b)	KOSPI라는 list로 df_KOSPI의 Symbol값들을 저장하고, KOSDAQ이라는
 #### 2) 수행 결과
 먼저 환경 세팅을 진행한다.
 
-```shell script
+```
 python3 -m venv venv
 pip install -U pip
 pip install -U setuptools
