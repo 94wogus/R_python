@@ -580,3 +580,7 @@ print_plot<-function(n, datas){
   }
 }
 ```
+### 3.2. 과제 2 소스코드
+
+#### [final.py](https://github.com/94wogus/R_python_final/blob/master/python/final.py)
+코드의 길이가 너무 길어 [링크](https://github.com/94wogus/R_python_final/blob/master/python/final.py)로 대체합니다.
