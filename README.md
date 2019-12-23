@@ -190,12 +190,14 @@ b)	KOSPI라는 list로 df_KOSPI의 Symbol값들을 저장하고, KOSDAQ이라는
 
 #### 2) 수행 결과
 먼저 환경 세팅을 진행한다.
+
 ```shell script
 python3 -m venv venv
 pip install -U pip
 pip install -U setuptools
 pip install -r requirements.txt -U
 ```
+
 먼저 KOSPI의 상장 데이터를 데이터 프레임으로 만든다.
 이후 Symbol 값을 list로 저장후 갯수를 출력한다.
 
@@ -208,6 +210,7 @@ KOSPI = list(df_KOSPI['Symbol'])
 print(df_KOSPI.head())
 print("{} 상장 회사 수: {}".format(index, len(KOSPI)))
 ```
+
 ```shell script
    Symbol   Name         Sector                                           Industry
 0  155660    DSR    1차 비철금속 제조업                                             합섬섬유로프
@@ -217,7 +220,9 @@ print("{} 상장 회사 수: {}".format(index, len(KOSPI)))
 4  010060    OCI    기초 화학물질 제조업   타르제품,카본블랙,무수프탈산,농약원제,석탄화학제품,정밀화학제품,플라스틱창호재 제조,판매
 KOSPI 상장 회사 수: 799
 ```
+
 마찬가지 방법으로 KOSDAQ에 대하여 진행한다.
+
 ```python
 # KOSDAQ
 index = 'KOSDAQ'
@@ -226,6 +231,7 @@ KOSDAQ = list(df_KOSDAQ['Symbol'])
 print(df_KOSDAQ.head())
 print("{} 상장 회사 수: {}".format(index, len(KOSDAQ)))
 ```
+
 ```shell script
    Symbol     Name          Sector             Industry
 0  051500  CJ프레시웨이  음·식료품 및 담배 도매업          식자재유통, 단체급식
@@ -240,6 +246,7 @@ KOSDAQ 상장 회사 수: 1400
 #### 1-1) 목표
 ) 삼성전자에 대한 주식 종목 코드를 찾는다. 이후 fdr.DataReader 메소드를 사용하여 자료를 받은후에 각 날짜에 대한 일별 주가 수익률을 꺽은선 그래프 형태로 그려본다.
 #### 1-2) 수행 결과
+
 ```python
 # 삼성전자 주가 그래프 얻기
 SamSung_electronic = df_KOSPI[df_KOSPI['Name'] == "삼성전자"]
@@ -251,6 +258,7 @@ print(df_SamSung_electronic)
 change_SamSung = df_SamSung_electronic['Change'] * 100
 print(change_SamSung.head())
 ```
+
 ```shell script
      Symbol  Name          Sector                                           Industry
 354  005930  삼성전자  통신 및 방송 장비 제조업  IMT2000 서비스용 동기식 기지국,교환국장비,데이터단말기,동영상휴대폰,핵심칩,반...
@@ -279,6 +287,7 @@ Date
 2018-01-08   -0.191865
 Name: Change, dtype: float64
 ```
+
 ```python
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -289,16 +298,22 @@ plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
 change_SamSung.plot()
 plt.savefig('./static/change.png')
 ```
+
 ![change](./python/static/change.png)
 
 #### 2-1) 목표
-KOSDAQ과 KOSPI에서 거래되는 전체 기업들에 대해서 각각 일별 수익률의 연간 평균과 표준편차를 구해본다. 전체기업들에 대해 평균수익률-표준편차의 산포도를 그려본다. 이러한 산포도를 KOSPI에 상장된 기업과 KOSDAQ에 상장된 기업에 대해 구분해서 각각 산포도를 그려본다.  
-이 두 변수간의 양의 관계가 있는가? 평균수익률은 일종의 사람들이 기대하는 수익률과 밀접한 관련이 있으며, 주가수익률의 표준편차가 클수록 일반적으로 수익률의 리스크(위험도)가 크다고 생각한다. 
+KOSDAQ과 KOSPI에서 거래되는 전체 기업들에 대해서 각각 일별 수익률의 연간 평균과 표준편차를 구해본다.   
+전체기업들에 대해 평균수익률-표준편차의 산포도를 그려본다.   
+이러한 산포도를 KOSPI에 상장된 기업과 KOSDAQ에 상장된 기업에 대해 구분해서 각각 산포도를 그려본다.  
+이 두 변수간의 양의 관계가 있는가?   
+평균수익률은 일종의 사람들이 기대하는 수익률과 밀접한 관련이 있으며,   
+주가수익률의 표준편차가 클수록 일반적으로 수익률의 리스크(위험도)가 크다고 생각한다. 
 #### 2-2) 수행 결과
 먼저 KOSPI 기업에 대하여 수행을 하였다.
 위에서 만들어 놓은 KOSPI Symbol 리스트를 바탕으로 반복분을 진행하였다. 
 반복문 내부에서 Symbol에 따른 평균 및 표준 편차를 바탕으로 DataFrame를 만들고 이를 바탕으로 그래프를 출력하였다. 
 regulation을 위해서 seaborn 라이브러리를 활용하였다.
+
 ```python
 # KOSPI 기업의 연간 평균과 표준편차
 import pandas as pd
@@ -332,7 +347,9 @@ plt.ylabel('Standard Deviation', fontsize=8)
 plt.savefig("./static/KOSPI.png")
 plt.show()
 ```
+
 이에 다음과 같은 그래프를 얻을 수 있었다.
+
 ![KOSPI](./python/static/KOSPI.png)
 
 ```python
@@ -363,12 +380,17 @@ plt.ylabel('Standard Deviation', fontsize=8)
 plt.savefig("./static/KOSDAQ.png")
 plt.show()
 ```
+
 이에 다음과 같은 그래프를 얻을 수 있었다.
+
 ![KOSDAQ](./python/static/KOSDAQ.png)
 
 두 그래프 모두 양의 기울기를 가짐으로써 수익률이 클수록 리스크가 큰다는 경향을 확인 할 수 있었다.
+
 ### 2.3. STEP 2
+
 #### 1) 목표
+
 여러분은 이 회귀분석식을 한국시장에서 거래되는 모든 주식에 각각 α와 β를 Fitting 한다.
 
 1. 우리의 target 변수는 개별 주식의 일별수익률(change) – 무위험 수익률(0.03/365)이며
@@ -377,7 +399,9 @@ plt.show()
 4. 3의 분석을 KOSPI 시장과 KOSDAQ 시장을 분리해서 시행한다. 
 
 #### 2) 수행 결과
+
 먼저 KOSPI 시장에 대하여 위의 내용을 수행한다.
+
 ```python
 import statsmodels.api as sm
 if os.path.isfile("./KOSPI_Fitting.csv"):
@@ -412,9 +436,11 @@ plt.ylabel('b1', fontsize=8)
 plt.savefig("./static/KOSPI_Fitting.png")
 plt.show()
 ```
+
 ![KOSPI_Fitting](./python/static/KOSPI_Fitting.png)
 
 마찬가지 방법으로 KOSDAQ 시장에 대하여 진행한다.
+
 ```python
 if os.path.isfile("./KOSDAQ_Fitting.csv"):
     KOSDAQ_Fitting = pd.read_csv("./KOSDAQ_Fitting.csv")
@@ -448,23 +474,32 @@ plt.ylabel('b1', fontsize=8)
 plt.savefig("./static/KOSDAQ_Fitting.png")
 plt.show()
 ```
+
 ![KOSDAQ_Fitting](./python/static/KOSDAQ_Fitting.png)
 
 두가지 모두 양의 기울기를 같는것을 확인 할 수 있다.
 
 ### 2.4. STEP 3
+
 #### 1) 목표
+
 1.	전체 주식에 대해서 1월 2일과 6월 29일까지 누적 수익률을 구한다 이 누적수익률은 (6월 29일 종가-1월 2일 종가)/ 1월 2일 종가로 계산한다. 
 2.	이 전체 수익률을 바탕으로 수익률 상위 – 하위까지 10개 그룹으로 구분한다. 
 3.	각 기업에 대해 7월 2일부터 9월 28일 (3개월 누적 수익률) 및 7월 2일부터 12월 28일까지의 누적수익률 (6개월 누적 수익률)을 1번과 동일한 방법으로 구한다.
 4.	1-6월부터 누적 수익률 10개 기업 그룹별로 3개월 그룹수익률의 평균 및 6개월 누적 수익률의 평균값을 계산하여 막대그래프 형식으로 표시한다.
 5.	KOSPI와 KOSDAQ으로 상장 기업그룹을 나누어 1-4번까지 작업을 반복한다.
+
 #### 2) 수행 결과
+
 기한 내에 수행하지 못하였습니다.
 과제는 늦었지만 공부를 위하여 빠른 시일내에 완료 하겠습니다.
+
 ## 3. 부록
+
 ### 3.1. 과제 1 소스코드
+
 #### [option.R](https://github.com/94wogus/R_python_final/blob/master/R/option.R)
+
 ```R
 library('ggplot2')
 
@@ -480,7 +515,9 @@ question1<-function() {
   ggplot(data=df, aes(x=St, y=Y)) + geom_point(size=1) + labs(x="St", y="Y")
 }
 ```
+
 #### [BSM.R](https://github.com/94wogus/R_python_final/blob/master/R/BSM.R)
+
 ```R
 BSM<-function(s, k, t, vol, rf) {
   x = vol * sqrt(t)
@@ -490,7 +527,9 @@ BSM<-function(s, k, t, vol, rf) {
   return(c)
 }
 ```
+
 #### [option_final.R](https://github.com/94wogus/R_python_final/blob/master/R/option_final.R)
+
 ```R
 option<-function(s, k, t, vol, rf, dt, N){
   M = t/dt
@@ -525,7 +564,9 @@ option<-function(s, k, t, vol, rf, dt, N){
   return(S)
 }
 ```
+
 #### [print_plot.R](https://github.com/94wogus/R_python_final/blob/master/R/print_plot.R)
+
 ```R
 print_plot<-function(n, datas){
   for (i in 1:n){
@@ -537,8 +578,11 @@ print_plot<-function(n, datas){
   }
 }
 ```
+
 ### 3.2. 과제 2 소스코드
+
 #### [final.py](https://github.com/94wogus/R_python_final/blob/master/python/final.py)
+
 ```python
 import FinanceDataReader as fdr
 
