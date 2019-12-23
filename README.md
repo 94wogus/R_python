@@ -16,7 +16,7 @@
 
 ## 0. 환경 세팅
 만일 git을 사용하는 환경이라면 다음과 같은 cli명령어로 데이터를 확보 할 수 있다.
-```shell script
+```
 git clone https://github.com/94wogus/R_python_final.git
 ```
 
