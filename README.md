@@ -5,11 +5,11 @@
 1.1. [기준 자산 Y 그래프 출력](#11-기준-자산-y-그래프-출력)  
 1.2. [옵션 가격 결정](#12-옵션-가격-결정)  
 1.3. [주가 경로에 따른 옵션 가격 제시](#13-주가-경로에-따른-옵션-가격-제시)  
-2. [(개인 과제)](#3-k-means-clustering-알고리즘)  
-2.1. [연구 목적](#21-연구-목적)  
-2.2. [데이터 설명 및 수집 방법](#22-데이터-설명-및-수집-방법)  
-2.3. [모형 선택 및 설명](#23-모형-선택-및-설명)   
-2.4. [분석 및 해석](#24-분석-및-해석)  
+2. [교수출제 기말과제 (개별과제 대체)](#2-교수출제-기말과제-개별과제-대체)  
+2.1. [STEP 0](#21-step-0)  
+2.2. [STEP 1](#22-step-1)  
+2.3. [STEP 2](#23-step-2)   
+2.4. [STEP 3](#24-step-3)  
 3. [부록](#3-부록)  
 3.1. [과제 1 소스코드](#31-과제-1-소스코드)  
 3.2. [과제 2 소스코드](#32-과제-2-소스코드)  
@@ -464,7 +464,7 @@ plt.show()
 과제는 늦었지만 공부를 위하여 빠른 시일내에 완료 하겠습니다.
 ## 3. 부록
 ### 3.1. 과제 1 소스코드
-#### [option.R]()
+#### [option.R](https://github.com/94wogus/R_python_final/blob/master/R/option.R)
 ```R
 library('ggplot2')
 
@@ -480,7 +480,7 @@ question1<-function() {
   ggplot(data=df, aes(x=St, y=Y)) + geom_point(size=1) + labs(x="St", y="Y")
 }
 ```
-#### [BSM.R]()
+#### [BSM.R](https://github.com/94wogus/R_python_final/blob/master/R/BSM.R)
 ```R
 BSM<-function(s, k, t, vol, rf) {
   x = vol * sqrt(t)
@@ -490,7 +490,7 @@ BSM<-function(s, k, t, vol, rf) {
   return(c)
 }
 ```
-#### [option_final.R]()
+#### [option_final.R](https://github.com/94wogus/R_python_final/blob/master/R/option_final.R)
 ```R
 option<-function(s, k, t, vol, rf, dt, N){
   M = t/dt
@@ -525,7 +525,7 @@ option<-function(s, k, t, vol, rf, dt, N){
   return(S)
 }
 ```
-#### [print_plot.R]()
+#### [print_plot.R](https://github.com/94wogus/R_python_final/blob/master/R/print_plot.R)
 ```R
 print_plot<-function(n, datas){
   for (i in 1:n){
@@ -538,7 +538,7 @@ print_plot<-function(n, datas){
 }
 ```
 ### 3.2. 과제 2 소스코드
-#### [final.py]()
+#### [final.py](https://github.com/94wogus/R_python_final/blob/master/python/final.py)
 ```python
 import FinanceDataReader as fdr
 
