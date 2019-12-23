@@ -213,7 +213,7 @@ print(df_KOSPI.head())
 print("{} 상장 회사 수: {}".format(index, len(KOSPI)))
 ```
 
-```shell script
+```
    Symbol   Name         Sector                                           Industry
 0  155660    DSR    1차 비철금속 제조업                                             합섬섬유로프
 1  001250  GS글로벌      상품 종합 도매업  수출입업(시멘트,철강금속,전기전자,섬유,기계화학),상품중개,광업,채석업/하수처리 서...
@@ -234,7 +234,7 @@ print(df_KOSDAQ.head())
 print("{} 상장 회사 수: {}".format(index, len(KOSDAQ)))
 ```
 
-```shell script
+```
    Symbol     Name          Sector             Industry
 0  051500  CJ프레시웨이  음·식료품 및 담배 도매업          식자재유통, 단체급식
 1  083660  CSA 코스믹      플라스틱제품 제조업    물탱크,상하수도용도류벽,축산탱크
@@ -261,7 +261,7 @@ change_SamSung = df_SamSung_electronic['Change'] * 100
 print(change_SamSung.head())
 ```
 
-```shell script
+```
      Symbol  Name          Sector                                           Industry
 354  005930  삼성전자  통신 및 방송 장비 제조업  IMT2000 서비스용 동기식 기지국,교환국장비,데이터단말기,동영상휴대폰,핵심칩,반...
 
